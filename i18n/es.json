@@ -1,3 +1,9 @@
 {
-    "hello": "Hola"
+    "welcome": "¡Bienvenido!",
+    "subtitle": "¿Listo para recorrer la ciudad?, inicia sesión para\ncomenzar.",
+    "have_account": "Tengo una cuenta",
+    "login_google": "Continuar con Google",
+    "or": "ó",
+    "account": "¿Aún no tienes cuenta?,",
+    "create_account": "Crea una cuenta ahora."
 }

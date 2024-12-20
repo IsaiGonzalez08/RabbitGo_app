@@ -3,9 +3,15 @@ import 'package:flutter/material.dart';
 class RabbitGoColors {
   static const primaryColor = MaterialColor(0xFF01142B, {});
 
-  static const secondaryColor = MaterialColor(0xFF023E86, {});
+  static const secondaryColor = MaterialColor(0xFF6C6C6C, {
+    50: Color(0xFFB8B8B8),
+    100: Color(0xFF9F9F9F),
+    200: Color(0xFF979797),
+  });
 
-  static const blueColor = MaterialColor(0xFF0465D9, {});
+  static const blueColor = MaterialColor(0xFF023E86, {
+    50: Color(0xFF0465D9),
+  });
 
   static const skyBlueColor = MaterialColor(0xFF4F9DFC, {
     50: Color(0xFF4F9DFC)
@@ -29,57 +35,61 @@ ThemeData rabbitGoTheme = ThemeData(
   textTheme: const TextTheme(
     headlineLarge: TextStyle(
       fontSize: 32,
-      fontWeight: FontWeight.w600
+      fontWeight: FontWeight.w700
     ),
     headlineMedium: TextStyle(
-      fontSize: 28,
+      fontSize: 24,
       fontWeight: FontWeight.w600
     ),
     headlineSmall: TextStyle(
       fontSize: 24,
-      fontWeight: FontWeight.w600
+      fontWeight: FontWeight.normal
     ),
     titleLarge: TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.w600
     ),
     titleMedium: TextStyle(
-      fontSize: 16,
+      fontSize: 18,
       fontWeight: FontWeight.w600
     ),
     titleSmall: TextStyle(
       fontSize: 16,
-      fontWeight: FontWeight.w500
+      fontWeight: FontWeight.w600
     ),
     bodyLarge: TextStyle(
       fontSize: 14,
-      fontWeight: FontWeight.w500
+      fontWeight: FontWeight.w700
     ),
     bodyMedium: TextStyle(
       fontSize: 16,
-      fontWeight: FontWeight.normal
+      fontWeight: FontWeight.w500
     ),
     bodySmall: TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w600
+    ),
+    labelLarge: TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.normal
     ),
     labelMedium: TextStyle(
       fontSize: 12,
-      fontWeight: FontWeight.normal
+      fontWeight: FontWeight.w500
     ),
     labelSmall: TextStyle(
-      fontSize: 10,
-      fontWeight: FontWeight.w500
-    )
+      fontSize: 12,
+      fontWeight: FontWeight.w700
+    ),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
-      backgroundColor: WidgetStatePropertyAll(
-        RabbitGoColors.blueColor[300]
+      backgroundColor: const WidgetStatePropertyAll(
+        RabbitGoColors.primaryColor
       ),
       shape: WidgetStatePropertyAll(
         RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8)
+          borderRadius: BorderRadius.circular(5)
         )
       )
     )
