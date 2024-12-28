@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rabbit_go/common/extensions/string_extensions.dart';
 import 'package:rabbit_go/common/utils/rabbit_go_theme.dart';
+import 'package:rabbit_go/routing/route_paths.dart';
 import 'package:rabbit_go/viewmodels/welcome_vm.dart';
 import 'package:stacked/stacked.dart';
 
@@ -8,20 +9,23 @@ class WelcomeView extends StatefulWidget {
   const WelcomeView({super.key});
 
   @override
-  State<WelcomeView> createState() => _WelcomeViewState();
+  State<StatefulWidget> createState() => _StateWelcomeView();
 }
 
-class _WelcomeViewState extends State<WelcomeView> {
+class _StateWelcomeView extends State<WelcomeView> {
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder.reactive(
-        viewModelBuilder: () => WelcomeVM(),
-        builder: (context, viewModel, child) {
-          return Scaffold(backgroundColor: Colors.white, body: _body());
+    return ViewModelBuilder<WelcomeVM>.reactive(
+        viewModelBuilder: () => WelcomeVM(
+          context: context,
+          navigateToLogin: _navigateToLogin
+        ),
+        builder: (context, welcomeVM, child) {
+          return Scaffold(backgroundColor: Colors.white, body: _body(welcomeVM));
         });
   }
 
-  Widget _body() {
+  Widget _body(WelcomeVM welcomeVM) {
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -40,7 +44,7 @@ class _WelcomeViewState extends State<WelcomeView> {
             children: [
               _txtTitle(),
               _txtSubtitle(),
-              _btnHaveAccount(),
+              _btnHaveAccount(welcomeVM),
               _txtOr(),
               _btnLoginWithGoogle(),
               _txtCreateAccount()
@@ -75,12 +79,12 @@ class _WelcomeViewState extends State<WelcomeView> {
     );
   }
 
-  Widget _btnHaveAccount() {
+  Widget _btnHaveAccount(WelcomeVM welcomeVM) {
     return Container(
       margin: const EdgeInsets.only(top: 20),
       width: double.infinity,
       child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () => welcomeVM.onNavigateLogin(),
           child: Text(
             'have_account'.translate(context),
             style: Theme.of(context)
@@ -111,7 +115,7 @@ class _WelcomeViewState extends State<WelcomeView> {
           color: Colors.white,
           borderRadius: const BorderRadius.all(Radius.circular(5)),
           border: Border.all(
-            color: RabbitGoColors.skyBlueColor,
+            color: RabbitGoColors.secondaryColor[50]!,
             width: 1,
           )),
       width: double.infinity,
@@ -132,7 +136,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                 style: Theme.of(context)
                     .textTheme
                     .bodySmall
-                    ?.copyWith(color: RabbitGoColors.secondaryColor[100]),
+                    ?.copyWith(color: RabbitGoColors.secondaryColor[200]),
               ),
               Container()
             ],
@@ -169,5 +173,9 @@ class _WelcomeViewState extends State<WelcomeView> {
         ],
       ),
     );
+  }
+
+  _navigateToLogin() {
+    Navigator.of(context).pushNamed(RoutePaths.login);
   }
 }

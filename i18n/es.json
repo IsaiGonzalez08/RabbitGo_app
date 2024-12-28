@@ -5,5 +5,11 @@
     "login_google": "Continuar con Google",
     "or": "ó",
     "account": "¿Aún no tienes cuenta?,",
-    "create_account": "Crea una cuenta ahora."
+    "create_account": "Crea una cuenta ahora.",
+    "welcome_again": "¡Bienvenido de vuelta!",
+    "enter_your_information" :"Ingresa tus datos para poder entrar.",
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "hide_password":"Ocultar contraseña",
+    "start": "Comenzar"
 }

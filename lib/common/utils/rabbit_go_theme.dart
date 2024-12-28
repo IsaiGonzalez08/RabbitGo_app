@@ -4,9 +4,11 @@ class RabbitGoColors {
   static const primaryColor = MaterialColor(0xFF01142B, {});
 
   static const secondaryColor = MaterialColor(0xFF6C6C6C, {
-    50: Color(0xFFB8B8B8),
-    100: Color(0xFF9F9F9F),
-    200: Color(0xFF979797),
+    50: Color(0xFFEBEBEB),
+    100: Color(0xFFEDEDED),
+    200: Color(0xFFB8B8B8),
+    300: Color(0xFF9F9F9F),
+    400: Color(0xFF979797),
   });
 
   static const blueColor = MaterialColor(0xFF023E86, {
@@ -81,6 +83,7 @@ ThemeData rabbitGoTheme = ThemeData(
       fontSize: 12,
       fontWeight: FontWeight.w700
     ),
+    
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rabbit_go/routing/route_paths.dart';
+import 'package:rabbit_go/ui/screens/login_view.dart';
 import 'package:rabbit_go/ui/screens/welcome_view.dart';
 
 Route<dynamic> generateMainRoute(RouteSettings settings) {
@@ -10,6 +11,11 @@ Route<dynamic> generateMainRoute(RouteSettings settings) {
       return MaterialPageRoute(
         settings: settings,
         builder: (context) => const WelcomeView(),
+      );
+    case RoutePaths.login:
+      return MaterialPageRoute(
+        settings: settings,
+        builder: (context) => const LoginView(),
       );
     default:
       return MaterialPageRoute(
