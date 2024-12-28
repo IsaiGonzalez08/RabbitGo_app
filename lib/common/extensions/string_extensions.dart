@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:rabbit_go/common/utils/app_localizations.dart';
+import 'package:rabbit_go/common/app_localizations.dart';
 
 extension StringExtension on String? {
   String get capitalize {

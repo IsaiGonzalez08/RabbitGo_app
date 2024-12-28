@@ -6,16 +6,21 @@ class LoginVM extends ChangeNotifier {
 
   LoginVM({required this.context});
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _isChecked = false;
+  bool _obscureText = false;
 
+  GlobalKey<FormState> get formKey => _formKey;
   TextEditingController get emailController => _emailController;
   TextEditingController get passwordController => _passwordController;
   bool get isChecked => _isChecked;
+  bool get obscureText => _obscureText;
 
   void onChanged(bool? value) {
     _isChecked = value!;
+    _obscureText = value;
     notifyListeners();
   }
 

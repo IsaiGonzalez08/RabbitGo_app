@@ -1,4 +1,4 @@
-import 'package:rabbit_go/common/utils/flavor.dart';
+import 'package:rabbit_go/common/flavor.dart';
 
 class Config {
   static Flavor appFlavor = Flavor.dev;

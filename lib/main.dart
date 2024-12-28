@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
-import 'package:rabbit_go/common/utils/app_localizations.dart';
-import 'package:rabbit_go/common/utils/firebase.dart';
-import 'package:rabbit_go/common/utils/rabbit_go_theme.dart';
+import 'package:rabbit_go/common/app_localizations.dart';
+import 'package:rabbit_go/common/firebase.dart';
+import 'package:rabbit_go/common/rabbit_go_theme.dart';
 import 'package:rabbit_go/routing/router.dart';
 import 'package:rabbit_go/ui/screens/splash.view.dart';
 

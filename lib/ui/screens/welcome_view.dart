@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rabbit_go/common/extensions/string_extensions.dart';
-import 'package:rabbit_go/common/utils/rabbit_go_theme.dart';
+import 'package:rabbit_go/common/rabbit_go_theme.dart';
 import 'package:rabbit_go/routing/route_paths.dart';
 import 'package:rabbit_go/viewmodels/welcome_vm.dart';
 import 'package:stacked/stacked.dart';
@@ -104,7 +104,7 @@ class _StateWelcomeView extends State<WelcomeView> {
         style: Theme.of(context)
             .textTheme
             .bodySmall
-            ?.copyWith(color: RabbitGoColors.secondaryColor[200]),
+            ?.copyWith(color: RabbitGoColors.secondaryColor[500]),
       )),
     );
   }
@@ -136,7 +136,7 @@ class _StateWelcomeView extends State<WelcomeView> {
                 style: Theme.of(context)
                     .textTheme
                     .bodySmall
-                    ?.copyWith(color: RabbitGoColors.secondaryColor[200]),
+                    ?.copyWith(color: RabbitGoColors.secondaryColor[500]),
               ),
               Container()
             ],

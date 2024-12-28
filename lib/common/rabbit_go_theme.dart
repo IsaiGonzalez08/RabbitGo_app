@@ -6,9 +6,10 @@ class RabbitGoColors {
   static const secondaryColor = MaterialColor(0xFF6C6C6C, {
     50: Color(0xFFEBEBEB),
     100: Color(0xFFEDEDED),
-    200: Color(0xFFB8B8B8),
-    300: Color(0xFF9F9F9F),
-    400: Color(0xFF979797),
+    200: Color(0xFFE2E2E2),
+    300: Color(0xFFB8B8B8),
+    400: Color(0xFF9F9F9F),
+    500: Color(0xFF979797),
   });
 
   static const blueColor = MaterialColor(0xFF023E86, {
