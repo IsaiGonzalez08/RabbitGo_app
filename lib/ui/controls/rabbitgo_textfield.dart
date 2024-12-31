@@ -7,25 +7,29 @@ class RabbitgoTextfield extends StatelessWidget {
   final FocusNode? focusNode;
   final String? hintText;
   final bool? obscureText;
+  final TextInputType keyboardType;
   const RabbitgoTextfield(
       {super.key,
       required this.controller,
       required this.validator,
       required this.hintText,
+      required this.keyboardType,
       this.obscureText,
       this.focusNode});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: keyboardType,
       controller: controller,
       validator: validator,
       focusNode: focusNode,
       obscureText: obscureText ?? false,
+      
       style: Theme.of(context)
           .textTheme
           .labelMedium
-          ?.copyWith(color: RabbitGoColors.secondaryColor[300]),
+          ?.copyWith(color: RabbitGoColors.primaryColor),
       decoration: InputDecoration(
           filled: true,
           fillColor: RabbitGoColors.secondaryColor[200],
@@ -37,6 +41,7 @@ class RabbitgoTextfield extends StatelessWidget {
               .textTheme
               .labelMedium
               ?.copyWith(color: RabbitGoColors.secondaryColor[300])),
+          
     );
   }
 }

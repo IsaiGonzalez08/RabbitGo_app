@@ -17,11 +17,13 @@ class _StateWelcomeView extends State<WelcomeView> {
   Widget build(BuildContext context) {
     return ViewModelBuilder<WelcomeVM>.reactive(
         viewModelBuilder: () => WelcomeVM(
-          context: context,
-          navigateToLogin: _navigateToLogin
-        ),
+              context: context,
+              navigateToLogin: _navigateToLogin,
+              navigateToSignUp: _navigateToSignUp,
+            ),
         builder: (context, welcomeVM, child) {
-          return Scaffold(backgroundColor: Colors.white, body: _body(welcomeVM));
+          return Scaffold(
+              backgroundColor: Colors.white, body: _body(welcomeVM));
         });
   }
 
@@ -47,7 +49,7 @@ class _StateWelcomeView extends State<WelcomeView> {
               _btnHaveAccount(welcomeVM),
               _txtOr(),
               _btnLoginWithGoogle(),
-              _txtCreateAccount()
+              _txtCreateAccount(welcomeVM)
             ],
           ),
         )
@@ -146,7 +148,7 @@ class _StateWelcomeView extends State<WelcomeView> {
     );
   }
 
-  Widget _txtCreateAccount() {
+  Widget _txtCreateAccount(WelcomeVM welcomeVM) {
     return Container(
       margin: const EdgeInsets.only(top: 24),
       child: Row(
@@ -163,7 +165,7 @@ class _StateWelcomeView extends State<WelcomeView> {
             width: 4,
           ),
           InkWell(
-            onTap: () {},
+            onTap: () => welcomeVM.onNavigateSignUp(),
             child: Text('create_account'.translate(context),
                 style: Theme.of(context)
                     .textTheme
@@ -177,5 +179,9 @@ class _StateWelcomeView extends State<WelcomeView> {
 
   _navigateToLogin() {
     Navigator.of(context).pushNamed(RoutePaths.login);
+  }
+
+  _navigateToSignUp() {
+    Navigator.of(context).pushNamed(RoutePaths.signup);
   }
 }

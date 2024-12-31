@@ -11,5 +11,12 @@
     "email": "Correo Electrónico",
     "password": "Contraseña",
     "hide_password":"Ocultar contraseña",
-    "start": "Comenzar"
+    "start": "Comenzar",
+    "enter_information": "Ingresa tus datos",
+    "remember": "Recuerda colocar tus datos correctamente.",
+    "name": "Nombre",
+    "lastname": "Apellidos",
+    "confirm_password": "Confirmar Contraseña",
+    "terms_conditions": "Al registrarte aceptas todos los términos y condiciones de la aplicación.",
+    "required_field": "Por favor ingresa un texto"
 }

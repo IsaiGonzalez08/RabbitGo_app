@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rabbit_go/common/extensions/string_extensions.dart';
 import 'package:rabbit_go/common/rabbit_go_theme.dart';
 import 'package:rabbit_go/common/utils/utilities.dart';
+import 'package:rabbit_go/routing/route_paths.dart';
 import 'package:rabbit_go/ui/controls/rabbitgo_textfield.dart';
 import 'package:rabbit_go/viewmodels/login_vm.dart';
 import 'package:stacked/stacked.dart';
@@ -17,7 +18,8 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<LoginVM>.reactive(
-        viewModelBuilder: () => LoginVM(context: context),
+        viewModelBuilder: () =>
+            LoginVM(context: context, navigateToSignUp: _navigateToSignUp),
         builder: (context, loginVM, child) {
           return Scaffold(
             appBar: Utilities.defaultAppBar(context),
@@ -38,7 +40,7 @@ class _LoginViewState extends State<LoginView> {
             _form(loginVM),
             _btnCheckbox(loginVM),
             _btnStart(loginVM),
-            _txtCreateAccount()
+            _txtCreateAccount(loginVM)
           ],
         ),
       ),
@@ -87,8 +89,8 @@ class _LoginViewState extends State<LoginView> {
     return Form(
         key: loginVM.formKey,
         child: Column(
-      children: [_txtEmail(loginVM), _txtPassword(loginVM)],
-    ));
+          children: [_txtEmail(loginVM), _txtPassword(loginVM)],
+        ));
   }
 
   Widget _txtEmail(LoginVM loginVM) {
@@ -98,6 +100,7 @@ class _LoginViewState extends State<LoginView> {
         controller: loginVM.emailController,
         validator: loginVM.validateEmail,
         hintText: 'email'.translate(context),
+        keyboardType: TextInputType.emailAddress,
       ),
     );
   }
@@ -110,6 +113,7 @@ class _LoginViewState extends State<LoginView> {
         validator: loginVM.validatePassword,
         hintText: 'password'.translate(context),
         obscureText: loginVM.obscureText,
+        keyboardType: TextInputType.visiblePassword,
       ),
     );
   }
@@ -121,10 +125,8 @@ class _LoginViewState extends State<LoginView> {
         Transform.scale(
           scale: 0.75,
           child: Checkbox(
-            side: BorderSide(
-              color: RabbitGoColors.secondaryColor[200]!,
-              width: 1
-            ),
+              side: BorderSide(
+                  color: RabbitGoColors.secondaryColor[200]!, width: 1),
               activeColor: RabbitGoColors.primaryColor,
               value: loginVM.isChecked,
               onChanged: loginVM.onChanged),
@@ -156,7 +158,7 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
-  Widget _txtCreateAccount() {
+  Widget _txtCreateAccount(LoginVM loginVM) {
     return Container(
       margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.2),
       child: Row(
@@ -173,7 +175,7 @@ class _LoginViewState extends State<LoginView> {
             width: 4,
           ),
           InkWell(
-            onTap: () {},
+            onTap: () => loginVM.onNavigateToSignUp(),
             child: Text('create_account'.translate(context),
                 style: Theme.of(context)
                     .textTheme
@@ -183,5 +185,9 @@ class _LoginViewState extends State<LoginView> {
         ],
       ),
     );
+  }
+
+  _navigateToSignUp() {
+    Navigator.of(context).pushNamed(RoutePaths.signup);
   }
 }
