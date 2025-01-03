@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:rabbit_go/common/extensions/string_extensions.dart';
 import 'package:rabbit_go/common/rabbit_go_theme.dart';
 import 'package:rabbit_go/common/utils/utilities.dart';
@@ -27,18 +28,21 @@ class _SignUpViewState extends State<SignUpView> {
   }
 
   Widget _body(SignUpVM signUpVM) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-        child: Column(
-          children: [
-            _txtTitle(),
-            _txtSubtitle(),
-            _form(signUpVM),
-            _btnCheckbox(signUpVM),
-            _txtTermsAndConditions(),
-            _btnStart(signUpVM),
-          ],
+    return KeyboardActions(
+      config: signUpVM.buildConfig(),
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+          child: Column(
+            children: [
+              _txtTitle(),
+              _txtSubtitle(),
+              _form(signUpVM),
+              _btnCheckbox(signUpVM),
+              _txtTermsAndConditions(),
+              _btnStart(signUpVM),
+            ],
+          ),
         ),
       ),
     );
@@ -99,6 +103,10 @@ class _SignUpViewState extends State<SignUpView> {
         validator: signUpVM.validateField,
         hintText: 'name'.translate(context),
         keyboardType: TextInputType.name,
+        textInputAction: TextInputAction.next,
+        focusNode: signUpVM.nameFocusNode,
+        onFieldSubmitted: (_) =>
+            FocusScope.of(context).requestFocus(signUpVM.lastnameFocusNode),
       ),
     );
   }
@@ -106,10 +114,14 @@ class _SignUpViewState extends State<SignUpView> {
   Widget _txtLastname(SignUpVM signUpVM) {
     return Expanded(
       child: RabbitgoTextfield(
-        controller: signUpVM.nameController,
+        controller: signUpVM.lastnameController,
         validator: signUpVM.validateField,
         hintText: 'lastname'.translate(context),
         keyboardType: TextInputType.name,
+        textInputAction: TextInputAction.next,
+        focusNode: signUpVM.lastnameFocusNode,
+        onFieldSubmitted: (_) =>
+            FocusScope.of(context).requestFocus(signUpVM.emailFocusNode),
       ),
     );
   }
@@ -122,6 +134,10 @@ class _SignUpViewState extends State<SignUpView> {
         validator: signUpVM.validateEmail,
         hintText: 'email'.translate(context),
         keyboardType: TextInputType.emailAddress,
+        textInputAction: TextInputAction.next,
+        focusNode: signUpVM.emailFocusNode,
+        onFieldSubmitted: (_) =>
+            FocusScope.of(context).requestFocus(signUpVM.passwordFocusNode),
       ),
     );
   }
@@ -135,6 +151,11 @@ class _SignUpViewState extends State<SignUpView> {
         hintText: 'password'.translate(context),
         obscureText: signUpVM.obscureText,
         keyboardType: TextInputType.visiblePassword,
+        enableSuggestions: false,
+        textInputAction: TextInputAction.next,
+        focusNode: signUpVM.passwordFocusNode,
+        onFieldSubmitted: (_) => FocusScope.of(context)
+            .requestFocus(signUpVM.confirmPasswordFocusNode),
       ),
     );
   }
@@ -148,6 +169,13 @@ class _SignUpViewState extends State<SignUpView> {
         hintText: 'confirm_password'.translate(context),
         obscureText: signUpVM.obscureText,
         keyboardType: TextInputType.visiblePassword,
+        enableSuggestions: false,
+        textInputAction: TextInputAction.done,
+        focusNode: signUpVM.confirmPasswordFocusNode,
+        onFieldSubmitted: (_) {
+          FocusScope.of(context).unfocus();
+          signUpVM.onSignUp();
+        },
       ),
     );
   }

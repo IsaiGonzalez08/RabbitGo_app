@@ -20,6 +20,7 @@ dependencies:
   provider: ^6.1.2
   flutter_secure_storage: ^9.2.2
   stacked: ^3.4.4
+  keyboard_actions: ^4.2.0
 
 dev_dependencies:
   flutter_test:

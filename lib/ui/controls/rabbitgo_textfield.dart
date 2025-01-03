@@ -8,6 +8,9 @@ class RabbitgoTextfield extends StatelessWidget {
   final String? hintText;
   final bool? obscureText;
   final TextInputType keyboardType;
+  final TextInputAction? textInputAction;
+  final bool enableSuggestions;
+  final void Function(String)? onFieldSubmitted;
   const RabbitgoTextfield(
       {super.key,
       required this.controller,
@@ -15,7 +18,10 @@ class RabbitgoTextfield extends StatelessWidget {
       required this.hintText,
       required this.keyboardType,
       this.obscureText,
-      this.focusNode});
+      this.focusNode,
+      this.textInputAction,
+      this.enableSuggestions = true,
+      this.onFieldSubmitted});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +31,10 @@ class RabbitgoTextfield extends StatelessWidget {
       validator: validator,
       focusNode: focusNode,
       obscureText: obscureText ?? false,
-      
+      textInputAction: textInputAction,
+      enableSuggestions: enableSuggestions,
+      autocorrect: true,
+      onFieldSubmitted: onFieldSubmitted,      
       style: Theme.of(context)
           .textTheme
           .labelMedium
@@ -40,8 +49,11 @@ class RabbitgoTextfield extends StatelessWidget {
           hintStyle: Theme.of(context)
               .textTheme
               .labelMedium
-              ?.copyWith(color: RabbitGoColors.secondaryColor[300])),
-          
+              ?.copyWith(color: RabbitGoColors.secondaryColor[300]),
+          errorStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
+            color: Colors.red
+          ),
+          errorMaxLines: 2), 
     );
   }
 }

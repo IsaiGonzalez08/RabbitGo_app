@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:keyboard_actions/keyboard_actions_config.dart';
+import 'package:keyboard_actions/keyboard_actions_item.dart';
 import 'package:rabbit_go/common/extensions/string_extensions.dart';
 
 class SignUpVM extends ChangeNotifier {
@@ -11,6 +13,11 @@ class SignUpVM extends ChangeNotifier {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
+  final FocusNode _nameFocusNode = FocusNode();
+  final FocusNode _lastnameFocusNode = FocusNode();
+  final FocusNode _emailFocusNode = FocusNode();
+  final FocusNode _passwordFocusNode = FocusNode();
+  final FocusNode _confirmPasswordFocusNode = FocusNode();
   bool _isChecked = false;
   bool _obscureText = false;
 
@@ -20,8 +27,26 @@ class SignUpVM extends ChangeNotifier {
   TextEditingController get emailController => _emailController;
   TextEditingController get passwordController => _passwordController;
   TextEditingController get confirmPasswordController => _confirmPasswordController;
+  FocusNode get nameFocusNode => _nameFocusNode;
+  FocusNode get lastnameFocusNode => _lastnameFocusNode;
+  FocusNode get emailFocusNode => _emailFocusNode;
+  FocusNode get passwordFocusNode => _passwordFocusNode;
+  FocusNode get confirmPasswordFocusNode => _confirmPasswordFocusNode;
   bool get isChecked => _isChecked;
   bool get obscureText => _obscureText;
+
+  buildConfig() {
+    return KeyboardActionsConfig(
+      defaultDoneWidget: Container(),
+      actions: [
+        KeyboardActionsItem(focusNode: _nameFocusNode),
+        KeyboardActionsItem(focusNode: _lastnameFocusNode),
+        KeyboardActionsItem(focusNode: _emailFocusNode),
+        KeyboardActionsItem(focusNode: _passwordFocusNode),
+        KeyboardActionsItem(focusNode: _confirmPasswordFocusNode),
+      ],
+    );
+  }
 
   void onChanged(bool? value) {
     _isChecked = value!;
@@ -57,6 +82,10 @@ class SignUpVM extends ChangeNotifier {
   }
 
   singUp() {
+
+  }
+
+  onNavigateToHome() {
 
   }
 }

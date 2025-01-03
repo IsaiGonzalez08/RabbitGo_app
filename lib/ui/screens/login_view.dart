@@ -101,6 +101,10 @@ class _LoginViewState extends State<LoginView> {
         validator: loginVM.validateEmail,
         hintText: 'email'.translate(context),
         keyboardType: TextInputType.emailAddress,
+        textInputAction: TextInputAction.next,
+        focusNode: loginVM.emailFocusNode,
+        onFieldSubmitted: (_) =>
+            FocusScope.of(context).requestFocus(loginVM.passwordFocusNode),
       ),
     );
   }
@@ -114,6 +118,13 @@ class _LoginViewState extends State<LoginView> {
         hintText: 'password'.translate(context),
         obscureText: loginVM.obscureText,
         keyboardType: TextInputType.visiblePassword,
+        enableSuggestions: false,
+        textInputAction: TextInputAction.done,
+        focusNode: loginVM.passwordFocusNode,
+        onFieldSubmitted: (_) {
+          FocusScope.of(context).unfocus();
+          loginVM.onLogin();
+        },
       ),
     );
   }

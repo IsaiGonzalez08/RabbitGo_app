@@ -29,7 +29,6 @@ class _StateWelcomeView extends State<WelcomeView> {
 
   Widget _body(WelcomeVM welcomeVM) {
     return Stack(
-      fit: StackFit.expand,
       children: [
         Positioned.fill(
           child: Image.asset(
@@ -37,20 +36,23 @@ class _StateWelcomeView extends State<WelcomeView> {
             fit: BoxFit.cover,
           ),
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(
+        SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
               horizontal: 20,
-              vertical: MediaQuery.of(context).size.height * 0.2),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              _txtTitle(),
-              _txtSubtitle(),
-              _btnHaveAccount(welcomeVM),
-              _txtOr(),
-              _btnLoginWithGoogle(),
-              _txtCreateAccount(welcomeVM)
-            ],
+              vertical: MediaQuery.of(context).size.height * 0.5,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                _txtTitle(),
+                _txtSubtitle(),
+                _btnHaveAccount(welcomeVM),
+                _txtOr(),
+                _btnLoginWithGoogle(),
+                _txtCreateAccount(welcomeVM)
+              ],
+            ),
           ),
         )
       ],
