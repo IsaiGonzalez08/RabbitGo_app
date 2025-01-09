@@ -7,10 +7,10 @@
     "account": "¿Aún no tienes cuenta?,",
     "create_account": "Crea una cuenta ahora.",
     "welcome_again": "¡Bienvenido de vuelta!",
-    "enter_your_information" :"Ingresa tus datos para poder entrar.",
+    "enter_your_information": "Ingresa tus datos para poder entrar.",
     "email": "Correo Electrónico",
     "password": "Contraseña",
-    "hide_password":"Ocultar contraseña",
+    "hide_password": "Ocultar contraseña",
     "start": "Comenzar",
     "enter_information": "Ingresa tus datos",
     "remember": "Recuerda colocar tus datos correctamente.",
@@ -18,5 +18,13 @@
     "lastname": "Apellidos",
     "confirm_password": "Confirmar Contraseña",
     "terms_conditions": "Al registrarte aceptas todos los términos y condiciones de la aplicación.",
-    "required_field": "Por favor ingresa un texto"
+    "required_field": "Por favor ingresa un texto",
+    "active_location": "Activa tú ubicación",
+    "set_permissions": "Da los permisos necesarios para que la aplicación funcione de la manera mas optima para brindarte la mejor experiencia.",
+    "active": "Activar",
+    "deny_access": "Denegar acceso",
+    "init": "Inicio",
+    "search": "Buscar",
+    "favorites": "Favoritos",
+    "configuration": "Configuración"
 }

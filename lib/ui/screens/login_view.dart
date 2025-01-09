@@ -18,8 +18,10 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<LoginVM>.reactive(
-        viewModelBuilder: () =>
-            LoginVM(context: context, navigateToSignUp: _navigateToSignUp),
+        viewModelBuilder: () => LoginVM(
+            context: context,
+            navigateToSignUp: _navigateToSignUp,
+            navigateToHomeUser: _navigateToHomeUser),
         builder: (context, loginVM, child) {
           return Scaffold(
             appBar: Utilities.defaultAppBar(context),
@@ -200,5 +202,9 @@ class _LoginViewState extends State<LoginView> {
 
   _navigateToSignUp() {
     Navigator.of(context).pushNamed(RoutePaths.signup);
+  }
+
+  _navigateToHomeUser() {
+    Navigator.of(context).pushNamed(RoutePaths.homeUser);
   }
 }

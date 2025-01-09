@@ -18,8 +18,8 @@ class SignUpVM extends ChangeNotifier {
   final FocusNode _emailFocusNode = FocusNode();
   final FocusNode _passwordFocusNode = FocusNode();
   final FocusNode _confirmPasswordFocusNode = FocusNode();
-  bool _isChecked = false;
-  bool _obscureText = false;
+  bool _isChecked = true;
+  bool _obscureText = true;
 
   GlobalKey<FormState> get formKey => _formKey;
   TextEditingController get nameController => _nameController;

@@ -21,6 +21,11 @@ dependencies:
   flutter_secure_storage: ^9.2.2
   stacked: ^3.4.4
   keyboard_actions: ^4.2.0
+  lucide_icons_flutter: ^1.2.5
+  google_maps_flutter: ^2.10.0
+  shared_preferences: ^2.3.5
+  location: ^7.0.1
+  app_settings: ^5.1.1
 
 dev_dependencies:
   flutter_test:

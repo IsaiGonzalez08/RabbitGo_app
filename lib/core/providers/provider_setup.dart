@@ -1,16 +1,10 @@
-/* import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:rabbit_go/core/providers/location_provider.dart';
 
 List<SingleChildWidget> providers() {
   List<SingleChildWidget> providers = [
-    Provider.value(
-      value: const FlutterSecureStorage(aOptions: AndroidOptions(encryptedSharedPreferences: true))
-    ),
-    ProxyProvider<FlutterSecureStorage, Session>(
-      update: (context, flutterSecureStorage, previous) => Session.newInstance(flutterSecureStorage: flutterSecureStorage),
-    ),
+    Provider.value(value: LocationProvider()),
   ];
-
   return providers;
-} */
+}

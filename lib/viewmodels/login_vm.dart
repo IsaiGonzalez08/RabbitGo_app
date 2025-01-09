@@ -6,16 +6,17 @@ import 'package:rabbit_go/common/extensions/string_extensions.dart';
 class LoginVM extends ChangeNotifier {
   final BuildContext context;
   final Function() navigateToSignUp;
+  final Function() navigateToHomeUser;
 
-  LoginVM({required this.context, required this.navigateToSignUp});
+  LoginVM({required this.context, required this.navigateToSignUp, required this.navigateToHomeUser});
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final FocusNode _emailFocusNode = FocusNode();
   final FocusNode _passwordFocusNode = FocusNode();
-  bool _isChecked = false;
-  bool _obscureText = false;
+  bool _isChecked = true;
+  bool _obscureText = true;
 
   GlobalKey<FormState> get formKey => _formKey;
   TextEditingController get emailController => _emailController;
@@ -61,7 +62,9 @@ class LoginVM extends ChangeNotifier {
     }
   }
 
-  login() {}
+  login() {
+    navigateToHomeUser();
+  }
 
   onNavigateToSignUp() {
     navigateToSignUp();
