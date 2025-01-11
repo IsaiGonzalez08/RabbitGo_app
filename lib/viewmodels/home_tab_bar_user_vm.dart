@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:rabbit_go/common/safe_change_notifier.dart';
 import 'package:rabbit_go/models/bottom_bar_item.dart';
+import 'package:rabbit_go/ui/screens/favorites_view.dart';
 import 'package:rabbit_go/ui/screens/home_view.dart';
-import 'package:rabbit_go/ui/screens/profile_view.dart';
+import 'package:rabbit_go/ui/screens/settings_view.dart';
 import 'package:rabbit_go/ui/screens/search_view.dart';
 
 class HomeTabBarUserVM extends SafeChangeNotifier {
@@ -28,8 +29,8 @@ class HomeTabBarUserVM extends SafeChangeNotifier {
     _bottomBarItems = [
       BottomBarItem("init", LucideIcons.house, const HomeView()),
       BottomBarItem("search", LucideIcons.search, const SearchView()),
-      BottomBarItem("favorites", LucideIcons.heart, const ConfigurationView()),
-      BottomBarItem("configuration", LucideIcons.cog, const ConfigurationView()),
+      BottomBarItem("favorites", LucideIcons.heart, const FavoritesView()),
+      BottomBarItem("settings", LucideIcons.cog, const SettingsView()),
     ];
     notifyListeners();
   }

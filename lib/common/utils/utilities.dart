@@ -1,3 +1,4 @@
+import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
@@ -16,6 +17,20 @@ class Utilities {
               width: 30,
             ),
           )),
+    );
+  }
+
+  static AppBar titleAppBar(BuildContext context, String title) {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      centerTitle: true,
+      title: Text(
+        title.translate(context),
+        style: Theme.of(context)
+            .textTheme
+            .bodySmall
+            ?.copyWith(color: RabbitGoColors.secondaryColor),
+      ),
     );
   }
 }
@@ -113,9 +128,7 @@ showModalSheet(BuildContext context) {
                 ),
               ),
               Container(
-                constraints: const BoxConstraints(
-                  minWidth: 250
-                ),
+                constraints: const BoxConstraints(minWidth: 250),
                 child: Text(
                   'set_permissions'.translate(context),
                   textAlign: TextAlign.center,
@@ -129,7 +142,8 @@ showModalSheet(BuildContext context) {
                 margin: const EdgeInsets.only(top: 35, bottom: 5),
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => AppSettings.openAppSettings(
+                        type: AppSettingsType.location),
                     child: Text(
                       'active'.translate(context),
                       style: Theme.of(context)
@@ -141,7 +155,7 @@ showModalSheet(BuildContext context) {
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                    onPressed: () {},
+                    onPressed: () => Navigator.pop(context),
                     child: Text(
                       'deny_access'.translate(context),
                       style: Theme.of(context)

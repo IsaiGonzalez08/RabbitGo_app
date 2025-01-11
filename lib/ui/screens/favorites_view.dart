@@ -11,7 +11,7 @@ class _FavoritesViewState extends State<FavoritesView> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Text('hola'),
+      body: Center(child: Text('hola')),
     );
   }
 }

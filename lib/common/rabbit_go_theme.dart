@@ -19,6 +19,11 @@ class RabbitGoColors {
   static const skyBlueColor = MaterialColor(0xFF4F9DFC, {
     50: Color(0xFF4F9DFC)
   });
+
+  static const redColor = MaterialColor(0xFF990404, {
+    50: Color(0xFFFF7878),
+    100: Color(0xFFAB0000)
+  });
 }
 
 ThemeData rabbitGoTheme = ThemeData(

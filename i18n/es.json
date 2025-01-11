@@ -26,5 +26,9 @@
     "init": "Inicio",
     "search": "Buscar",
     "favorites": "Favoritos",
-    "configuration": "Configuración"
+    "settings": "Configuración",
+    "location_permission_disabled": "Permisos de ubicación desactivados",
+    "press_to_enabled": "Presiona para activarlos",
+    "free": "Gratis",
+    "close_session": "Cerrar Sesión"
 }

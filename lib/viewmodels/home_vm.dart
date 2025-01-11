@@ -49,20 +49,9 @@ class HomeVM extends ChangeNotifier with WidgetsBindingObserver {
 
   init() async {
     await _setupLocation();
-    onShowPermissionSheet();
   }
 
-  onShowPermissionSheet() {
-    showPermissionSheet();
-  }
-
-  _setupLocation() async {
-    if (_locationPermissionEnabled == null ||
-        _locationPermissionEnabled == false) {
-      _loadingPermission = true;
-      notifyListeners();
-    }
-
+  validateLocationPermissions() async {
     bool statusPermission = await locationProvider.askLocationPermission();
     if (statusPermission) {
       _locationPermissionEnabled = true;
@@ -79,8 +68,18 @@ class HomeVM extends ChangeNotifier with WidgetsBindingObserver {
       }
     } else {
       _locationPermissionEnabled = false;
+      showPermissionSheet();
       notifyListeners();
     }
+  }
+
+  _setupLocation() async {
+    if (_locationPermissionEnabled == null ||
+        _locationPermissionEnabled == false) {
+      _loadingPermission = true;
+      notifyListeners();
+    }
+    await validateLocationPermissions();
     _loadingPermission = false;
     notifyListeners();
   }
