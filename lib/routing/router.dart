@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rabbit_go/routing/route_paths.dart';
 import 'package:rabbit_go/ui/screens/home_tab_bar_user.dart';
 import 'package:rabbit_go/ui/screens/login_view.dart';
+import 'package:rabbit_go/ui/screens/profile_view.dart';
 import 'package:rabbit_go/ui/screens/sign_up_view.dart';
 import 'package:rabbit_go/ui/screens/welcome_view.dart';
 
@@ -28,6 +29,11 @@ Route<dynamic> generateMainRoute(RouteSettings settings) {
       return MaterialPageRoute(
         settings: settings,
         builder: (context) => const HomeTabBarUser(),
+      );
+    case RoutePaths.profile:
+      return MaterialPageRoute(
+        settings: settings,
+        builder: (context) => const ProfileView(),
       );
     default:
       return MaterialPageRoute(

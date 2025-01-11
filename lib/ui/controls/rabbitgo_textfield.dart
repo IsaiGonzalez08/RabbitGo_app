@@ -11,6 +11,8 @@ class RabbitgoTextfield extends StatelessWidget {
   final TextInputAction? textInputAction;
   final bool enableSuggestions;
   final void Function(String)? onFieldSubmitted;
+  final bool withLabel;
+  final String? label;
   const RabbitgoTextfield(
       {super.key,
       required this.controller,
@@ -21,39 +23,60 @@ class RabbitgoTextfield extends StatelessWidget {
       this.focusNode,
       this.textInputAction,
       this.enableSuggestions = true,
-      this.onFieldSubmitted});
+      this.onFieldSubmitted,
+      this.withLabel = false,
+      this.label});
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      keyboardType: keyboardType,
-      controller: controller,
-      validator: validator,
-      focusNode: focusNode,
-      obscureText: obscureText ?? false,
-      textInputAction: textInputAction,
-      enableSuggestions: enableSuggestions,
-      autocorrect: true,
-      onFieldSubmitted: onFieldSubmitted,      
-      style: Theme.of(context)
-          .textTheme
-          .labelMedium
-          ?.copyWith(color: RabbitGoColors.primaryColor),
-      decoration: InputDecoration(
-          filled: true,
-          fillColor: RabbitGoColors.secondaryColor[200],
-          border: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-              borderSide: BorderSide.none),
-          hintText: hintText,
-          hintStyle: Theme.of(context)
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        withLabel
+            ? Container(
+              margin: const EdgeInsets.only(bottom: 5),
+              child: Text(
+                  label ?? '',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(color: RabbitGoColors.secondaryColor[500]),
+                ),
+            )
+            : const SizedBox.shrink(),
+        TextFormField(
+          keyboardType: keyboardType,
+          controller: controller,
+          validator: validator,
+          focusNode: focusNode,
+          obscureText: obscureText ?? false,
+          textInputAction: textInputAction,
+          enableSuggestions: enableSuggestions,
+          autocorrect: true,
+          onFieldSubmitted: onFieldSubmitted,
+          style: Theme.of(context)
               .textTheme
               .labelMedium
-              ?.copyWith(color: RabbitGoColors.secondaryColor[300]),
-          errorStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
-            color: Colors.red
+              ?.copyWith(color: RabbitGoColors.primaryColor),
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: RabbitGoColors.secondaryColor[200],
+            border: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+                borderSide: BorderSide.none),
+            hintText: hintText,
+            hintStyle: Theme.of(context)
+                .textTheme
+                .labelMedium
+                ?.copyWith(color: RabbitGoColors.secondaryColor[300]),
+            errorStyle: Theme.of(context)
+                .textTheme
+                .labelMedium
+                ?.copyWith(color: Colors.red),
+            errorMaxLines: 2,
           ),
-          errorMaxLines: 2), 
+        ),
+      ],
     );
   }
 }

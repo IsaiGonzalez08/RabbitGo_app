@@ -20,7 +20,7 @@ class _SettingsViewState extends State<SettingsView> {
         viewModelBuilder: () => SettingsVM(),
         builder: (context, settingsVM, child) {
           return Scaffold(
-            appBar: Utilities.titleAppBar(context, 'settings'),
+            appBar: Utilities.titleAppBar(context, 'settings', false),
             body: _body(settingsVM),
           );
         });
@@ -81,9 +81,10 @@ class _SettingsViewState extends State<SettingsView> {
       child: ListView.builder(
         itemCount: settingsVM.buttonsCount,
         itemBuilder: (context, index) {
+          final buttonData = settingsVM.textButtons[index];
           return InkWell(
             onTap: () {
-              debugPrint('object');
+              Navigator.pushNamed(context, buttonData['route'] ?? '');
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -92,7 +93,13 @@ class _SettingsViewState extends State<SettingsView> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(settingsVM.textButtons[index]),
+                    Text(
+                      buttonData['name'].translate(context),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium
+                          ?.copyWith(color: RabbitGoColors.secondaryColor),
+                    ),
                     const Icon(LucideIcons.chevronRight,
                         size: 20, color: RabbitGoColors.secondaryColor)
                   ],

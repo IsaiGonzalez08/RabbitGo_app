@@ -20,9 +20,9 @@ class Utilities {
     );
   }
 
-  static AppBar titleAppBar(BuildContext context, String title) {
+  static AppBar titleAppBar(BuildContext context, String title, bool setLeading) {
     return AppBar(
-      automaticallyImplyLeading: false,
+      automaticallyImplyLeading: setLeading,
       centerTitle: true,
       title: Text(
         title.translate(context),

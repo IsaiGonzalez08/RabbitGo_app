@@ -3,4 +3,5 @@ class RoutePaths {
   static const login = "/login";
   static const signup = "/signup";
   static const homeUser = "/homeUser";
+  static const profile = "/profile";
 }
