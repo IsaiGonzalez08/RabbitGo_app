@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rabbit_go/routing/route_paths.dart';
+import 'package:rabbit_go/ui/screens/find_place_view.dart';
 import 'package:rabbit_go/ui/screens/home_tab_bar_user.dart';
 import 'package:rabbit_go/ui/screens/login_view.dart';
 import 'package:rabbit_go/ui/screens/profile_view.dart';
@@ -34,6 +35,11 @@ Route<dynamic> generateMainRoute(RouteSettings settings) {
       return MaterialPageRoute(
         settings: settings,
         builder: (context) => const ProfileView(),
+      );
+    case RoutePaths.findPlace:
+      return MaterialPageRoute(
+        settings: settings,
+        builder: (context) => const FindPlaceView(),
       );
     default:
       return MaterialPageRoute(

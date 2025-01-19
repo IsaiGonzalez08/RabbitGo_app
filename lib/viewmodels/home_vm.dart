@@ -9,8 +9,12 @@ import 'package:rabbit_go/core/providers/location_provider.dart';
 class HomeVM extends ChangeNotifier with WidgetsBindingObserver {
   final LocationProvider locationProvider;
   final Function showPermissionSheet;
+  final Function navigateToFindPlace;
 
-  HomeVM({required this.locationProvider, required this.showPermissionSheet});
+  HomeVM(
+      {required this.locationProvider,
+      required this.showPermissionSheet,
+      required this.navigateToFindPlace});
 
   bool? _locationPermissionEnabled;
   bool _loadingPermission = true;
