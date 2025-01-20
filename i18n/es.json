@@ -35,5 +35,7 @@
     "subscription": "Subscripción",
     "general": "General",
     "update": "Actualizar",
-    "where_do_you_want_to_go": "¿A dónde quieres ir?"
+    "where_do_you_want_to_go": "¿A dónde quieres ir?",
+    "ascent_descent_stops": "Paradas de ascenso y descenso",
+    "boarding_routes": "Rutas para abordar."
 }

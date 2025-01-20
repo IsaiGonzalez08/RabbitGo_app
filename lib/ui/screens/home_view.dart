@@ -6,6 +6,7 @@ import 'package:rabbit_go/common/extensions/string_extensions.dart';
 import 'package:rabbit_go/common/rabbit_go_theme.dart';
 import 'package:rabbit_go/common/utils/utilities.dart';
 import 'package:rabbit_go/ui/screens/find_place_view.dart';
+import 'package:rabbit_go/ui/screens/home_routes_popup.dart';
 import 'package:rabbit_go/viewmodels/home_vm.dart';
 import 'package:stacked/stacked.dart';
 
@@ -102,6 +103,12 @@ class _HomeViewState extends State<HomeView> {
             mapType: MapType.normal,
             buildingsEnabled: true,
             compassEnabled: false,
+            markers: {
+              Marker(
+                  markerId: const MarkerId('Yo'),
+                  position: homeVM.currentLocation!,
+                  onTap: _showRoutesModal)
+            },
             initialCameraPosition:
                 CameraPosition(target: homeVM.currentLocation!, zoom: 17),
             onMapCreated: (controller) => homeVM.updateController(controller))
@@ -155,6 +162,15 @@ class _HomeViewState extends State<HomeView> {
           );
         },
       ),
+    );
+  }
+
+  void _showRoutesModal() {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.white,
+      showDragHandle: true,
+      builder: (context) => const HomeRoutesPopup(),
     );
   }
 
